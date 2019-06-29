@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hypemarc</title>
+    <title>LabTracc</title>
     <link href="https://fonts.googleapis.com/css?family=Heebo:400,500,700|Fira+Sans:600" rel="stylesheet">
     <link rel="stylesheet" href="dist/css/style.css">
 	<script src="https://unpkg.com/animejs@2.2.0/anime.min.js"></script>
@@ -41,8 +41,8 @@
                         <h1 class="m-0">
                             <a href="#">
 								<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
-									<title>Hypemarc</title>
-									<img src="./src/images/hypemarc-logo.png" width="79%">
+									<title>LabTracc</title>
+									<!-- <img src="./src/images/hypemarc-logo.png" width="79%"> -->
 									<!--
 								    <defs>
 								        <linearGradient x1="114.674%" y1="39.507%" x2="-52.998%" y2="39.507%" id="logo-a">
@@ -83,12 +83,23 @@
 	                        <h1 class="hero-title mt-0">Track Your Chemicals</h1>
 	                        <p class="hero-paragraph">Effortlessly track the chemicals in your lab with our automatic wireless system </p>
 							<div class="hero-form field field-grouped">
-								<div class="control control-expanded">
-									<input class="input" type="email" name="email" placeholder="Your email">
-								</div>
-								<div class="control">
-									<a class="button button-primary button-block" href="#">Schedule Demo</a>
-								</div>
+								<form name="submit-to-google-sheet"></form>
+									<div class="control control-expanded">
+										<input class="input" type="email" name="email" placeholder="Your email">
+									</div>
+									<div class="control">
+										<a class="button button-primary button-block" href="#" id="btn" onclick="submitFunc()">Schedule Demo</a>
+									</div>
+								</form>
+								<script>
+										const scriptURL = 'https://script.google.com/macros/s/AKfycbwrKY564kdShI4lm3P9YJlsytIb4WhaUEtoa2fI7XLyQpO_FDza/exec'
+										const form = document.forms['submit-to-google-sheet']
+										function submitFunc(){
+										  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+											.then(response => console.log('Success!', response))
+											.catch(error => console.error('Error!', error.message))
+										}
+								</script>
 							</div>
 						</div>
 						<div class="hero-illustration">
